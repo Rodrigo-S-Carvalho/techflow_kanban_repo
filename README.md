@@ -2,7 +2,6 @@
 Repositório de projeto para empresa fictícia TechFlow Solutions
 Projeto contém o repositório chamado techflow_kanban_repo e o projeto KanBan chamado teckflow_kanban.
 #Objetivo
-Criação de um jogo da velha simples como landing page interativa.
 
 #Levantamento de requisitos
 
@@ -10,6 +9,7 @@ Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema
 
 #Requisitos Funcionais
 
+* Permitir escolha de símbolo X ou O e mudança de nome do jogador (até 20 caracteres)
 * Tabuleiro HTML 3 x 3 com blocos clicáveis.
 * Sistema de placar Jogador vs CPU
 * Indicação do status da partida
@@ -28,11 +28,7 @@ Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema
 
 #Escopo
 
-Simples jogo da velha feito em HTML, CSS e JavaScript para cliente TechFlow Solutions. Hospedagem do site será realizada pelo próprio cliente, cabendo aqui apenas o desenvolvimento do sistema.
-
 #Tecnologia
-
-Web front-end: HTML, CSS e JavaScript (sem frameworks)
 
 #Gestão do projeto
 
@@ -89,3 +85,7 @@ Commits: feat, fix, docs, test e build, perf, style, refactor, chore, ci, raw, c
 #Pergunta 10 - Há alguma versão paga e/ou para download do jogo, com mais recursos?
 
 #Resposta 10 - Não, nenhuma outra versão além dessa deve ser disponibilizada no momento.
+
+#LOG de mudanças
+
+1 Cliente solicitou que o jogo inicie com possibilidade de escolha de símbolos X ou O e mudança do próprio nome (até 20 caracteres), antes da partida. Mudanças feitas em commits anteriores.
