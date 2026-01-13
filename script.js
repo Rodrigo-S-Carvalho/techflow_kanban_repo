@@ -1,19 +1,29 @@
 const board = document.getElementById("board");
 const cells = document.querySelectorAll(".cell");
 const statusText = document.getElementById("status");
+
+const setup = document.getElementById("setup");
+const startGameBtn = document.getElementById("startGameBtn");
+
+const playerNameInput = document.getElementById("playerName");
+const charCount = document.getElementById("charCount");
+
+const scoreboard = document.getElementById("scoreboard");
+const playerLabel = document.getElementById("playerLabel");
+
 const resetBtn = document.getElementById("resetBtn");
 
 const playerScoreEl = document.getElementById("playerScore");
 const cpuScoreEl = document.getElementById("cpuScore");
 
 let boardState = Array(9).fill("");
-let gameActive = true;
+let gameActive = false;
+
+let PLAYER = "X";
+let CPU = "O";
 
 let playerScore = 0;
 let cpuScore = 0;
-
-const PLAYER = "X";
-const CPU = "O";
 
 const winConditions = [
     [0,1,2],[3,4,5],[6,7,8],
@@ -21,15 +31,43 @@ const winConditions = [
     [0,4,8],[2,4,6]
 ];
 
+/* CHAR COUNTER */
+playerNameInput.addEventListener("input", () => {
+    const remaining = 20 - playerNameInput.value.length;
+    charCount.textContent = `${remaining} caracteres restantes`;
+});
+
+/* START GAME */
+startGameBtn.addEventListener("click", () => {
+    const name = playerNameInput.value.trim();
+    if (!name) {
+        alert("Digite um nome para começar.");
+        return;
+    }
+
+    PLAYER = document.querySelector('input[name="symbol"]:checked').value;
+    CPU = PLAYER === "X" ? "O" : "X";
+
+    playerLabel.textContent = name;
+
+    setup.classList.add("hidden");
+    scoreboard.classList.remove("hidden");
+    resetBtn.classList.remove("hidden");
+    board.classList.remove("disabled");
+
+    gameActive = true;
+    resetBoard();
+});
+
+/* GAME LOGIC */
 cells.forEach(cell => {
     cell.addEventListener("click", playerMove);
 });
 
-resetBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", resetBoard);
 
 function playerMove(e) {
     const index = e.target.dataset.index;
-
     if (!gameActive || boardState[index] !== "") return;
 
     makeMove(index, PLAYER);
@@ -40,25 +78,24 @@ function playerMove(e) {
 
 function cpuMove() {
     if (!gameActive) return;
-
-    let move = findBestMove();
+    const move = findBestMove();
     makeMove(move, CPU);
     checkGameEnd(CPU);
 }
 
-function makeMove(index, player) {
-    boardState[index] = player;
-    cells[index].textContent = player;
+function makeMove(index, symbol) {
+    boardState[index] = symbol;
+    cells[index].textContent = symbol;
     cells[index].classList.add("taken");
 }
 
-function checkGameEnd(player) {
-    if (checkWin(player)) {
+function checkGameEnd(symbol) {
+    if (checkWin(symbol)) {
         gameActive = false;
-        if (player === PLAYER) {
+        if (symbol === PLAYER) {
             playerScore++;
             playerScoreEl.textContent = playerScore;
-            statusText.textContent = "Você venceu!";
+            statusText.textContent = `${playerLabel.textContent} venceu!`;
         } else {
             cpuScore++;
             cpuScoreEl.textContent = cpuScore;
@@ -75,15 +112,14 @@ function checkGameEnd(player) {
     return false;
 }
 
-function checkWin(player) {
-    return winConditions.some(condition =>
-        condition.every(index => boardState[index] === player)
+function checkWin(symbol) {
+    return winConditions.some(combo =>
+        combo.every(i => boardState[i] === symbol)
     );
 }
 
 function findBestMove() {
-    // Tentar ganhar
-    for (let i = 0; i < boardState.length; i++) {
+    for (let i = 0; i < 9; i++) {
         if (boardState[i] === "") {
             boardState[i] = CPU;
             if (checkWin(CPU)) {
@@ -94,8 +130,7 @@ function findBestMove() {
         }
     }
 
-    // Bloquear jogador
-    for (let i = 0; i < boardState.length; i++) {
+    for (let i = 0; i < 9; i++) {
         if (boardState[i] === "") {
             boardState[i] = PLAYER;
             if (checkWin(PLAYER)) {
@@ -106,15 +141,14 @@ function findBestMove() {
         }
     }
 
-    // Jogada aleatória
-    const emptyCells = boardState
+    const empty = boardState
         .map((v, i) => v === "" ? i : null)
         .filter(v => v !== null);
 
-    return emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    return empty[Math.floor(Math.random() * empty.length)];
 }
 
-function resetGame() {
+function resetBoard() {
     boardState = Array(9).fill("");
     gameActive = true;
     statusText.textContent = "";
