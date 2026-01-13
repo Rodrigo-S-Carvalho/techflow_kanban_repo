@@ -8,30 +8,49 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Jogo da Velha</h1>
+<div class="container">
+    <h1>Jogo da Velha</h1>
 
-        <div class="scoreboard">
-            <div>Jogador: <span id="playerScore">0</span></div>
-            <div>CPU: <span id="cpuScore">0</span></div>
+    <!-- SETUP -->
+    <div class="setup" id="setup">
+        <label>
+            Nome do jogador
+            <input type="text" id="playerName" maxlength="20" placeholder="Digite seu nome">
+            <small id="charCount">20 caracteres restantes</small>
+        </label>
+
+        <div class="symbol-choice">
+            <p>Escolha seu símbolo</p>
+            <label><input type="radio" name="symbol" value="X" checked> X</label>
+            <label><input type="radio" name="symbol" value="O"> O</label>
         </div>
 
-        <div class="board" id="board">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
-        </div>
-
-        <button id="resetBtn">Reiniciar Partida</button>
-        <p id="status"></p>
+        <button id="startGameBtn">Começar Jogo</button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- PLACAR -->
+    <div class="scoreboard hidden" id="scoreboard">
+        <div><span id="playerLabel">Jogador</span>: <span id="playerScore">0</span></div>
+        <div>CPU: <span id="cpuScore">0</span></div>
+    </div>
+
+    <!-- TABULEIRO -->
+    <div class="board disabled" id="board">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+    </div>
+
+    <button id="resetBtn" class="hidden">Reiniciar Partida</button>
+    <p id="status"></p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
