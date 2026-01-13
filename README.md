@@ -14,6 +14,7 @@ Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema
 * Sistema de placar Jogador vs CPU
 * Indicação do status da partida
 * Botão "Reiniciar Partida"
+* Partidas alternam entre jogador humano e CPU, aumentando o desafio entre cada partida.
 
 #Requisitos Não Funcionais
 
@@ -88,6 +89,6 @@ Commits: feat, fix, docs, test e build, perf, style, refactor, chore, ci, raw, c
 
 #LOG de mudanças
 
-1 Cliente solicitou que o jogo inicie com possibilidade de escolha de símbolos X ou O e mudança do próprio nome (até 20 caracteres), antes da partida. Mudanças feitas em commits anteriores.
+1 Cliente solicitou que o jogo inicie com possibilidade de escolha de símbolos X ou O e mudança do próprio nome (até 20 caracteres), antes da partida. Mudanças feitas em commits anteriores. (concluído na issue #3)
 
-2 Usuário percebeu que jogo é muito fácil para o jogador humano, pois é ele quem sempre inicia o jogo. Alternar entre jogador primeiro, então CPU começando cada partida para aumentar o desafio.
+2 Usuário percebeu que jogo é muito fácil para o jogador humano, pois é ele quem sempre inicia o jogo. Alternar entre jogador primeiro, então CPU começando cada partida para aumentar o desafio. (concluído na issue #4).
