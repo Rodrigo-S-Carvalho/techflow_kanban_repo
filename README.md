@@ -9,6 +9,7 @@ Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema
 
 #Requisitos Funcionais
 
+* Sistema de login de uusuário e salvamento de pontos por partida (histórico de pontuações)
 * Permitir escolha de símbolo X ou O e mudança de nome do jogador (até 20 caracteres)
 * Tabuleiro HTML 3 x 3 com blocos clicáveis.
 * Sistema de placar Jogador vs CPU
@@ -64,7 +65,7 @@ Commits: feat, fix, docs, test e build, perf, style, refactor, chore, ci, raw, c
 
 #Pergunta 5 - O jogo deve permitir multiplayer?
 
-#Resposta 5 - Ainda não. Por enquanto, o jogo deve ser single player e um banco de dados (back-end) ainda não deve ser implementado.
+#Resposta 5 - Ainda não. Por enquanto, o jogo deve ser single player e um banco de dados (back-end) ainda não deve ser implementado. (fix - sistema de login e salvamento de partidas e pontos criados na issue #5)
 
 #Pergunta 6 - Há um limite de tempo ou de pontos para novas partidas?
 
@@ -92,3 +93,5 @@ Commits: feat, fix, docs, test e build, perf, style, refactor, chore, ci, raw, c
 1 Cliente solicitou que o jogo inicie com possibilidade de escolha de símbolos X ou O e mudança do próprio nome (até 20 caracteres), antes da partida. Mudanças feitas em commits anteriores. (concluído na issue #3)
 
 2 Usuário percebeu que jogo é muito fácil para o jogador humano, pois é ele quem sempre inicia o jogo. Alternar entre jogador primeiro, então CPU começando cada partida para aumentar o desafio. (concluído na issue #4).
+
+3 Cliente decidiu incluir um sistema de login ao projeto. Agora, o usuário deve logar com algum e-mail e uma senha. Nada muda internamente, a não ser o salvamento automático das pontuações de cada partida. Jogador pode consultar o resultado em um log.
