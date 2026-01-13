@@ -89,3 +89,5 @@ Commits: feat, fix, docs, test e build, perf, style, refactor, chore, ci, raw, c
 #LOG de mudanças
 
 1 Cliente solicitou que o jogo inicie com possibilidade de escolha de símbolos X ou O e mudança do próprio nome (até 20 caracteres), antes da partida. Mudanças feitas em commits anteriores.
+
+2 Usuário percebeu que jogo é muito fácil para o jogador humano, pois é ele quem sempre inicia o jogo. Alternar entre jogador primeiro, então CPU começando cada partida para aumentar o desafio.
