@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Controle Logístico</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+}
+
+input {
+    background: #1e293b;
+    color: #fff;
+}
+
+button {
+    background: #22c55e;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #16a34a;
+}
+
+.delete {
+    background: #ef4444;
+    color: #fff;
+}
+
+.delete:hover {
+    background: #dc2626;
+}
+
+.hidden {
+    display: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#loginBox {
+    max-width: 400px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+#loginError {
+    color: #f87171;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #020617;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGIN -->
+    <div id="loginBox">
+        <h1>Controle Logístico</h1>
+        <input type="email" id="email" placeholder="Login">
+        <input type="password" id="password" placeholder="Senha">
+        <button id="loginBtn">Entrar</button>
+        <p id="loginError"></p>
+    </div>
+
+    <!-- SISTEMA -->
+    <div id="system" class="hidden">
+
+        <div class="header">
+            <h1>Controle Logístico</h1>
+            <button id="happyHourBtn">Happy Hour</button>
+        </div>
+
+        <form id="form">
+            <input type="text" id="product" placeholder="Nome da mercadoria" required>
+            <input type="text" id="courier" placeholder="Nome do entregador" required>
+
+            <label>Início da entrega</label>
+            <input type="datetime-local" id="start" required>
+
+            <label>Previsão de término</label>
+            <input type="datetime-local" id="expected" required>
+
+            <label>Entrega confirmada</label>
+            <input type="datetime-local" id="confirmed">
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <h2>Entregas registradas</h2>
+        <ul id="list"></ul>
+    </div>
+</div>
+
+<script>
+/* CREDENCIAIS FIXAS */
+const ADMIN_EMAIL = "admin@logistica.com";
+const ADMIN_PASSWORD = "1234";
+
+/* ELEMENTOS */
+const loginBox = document.getElementById("loginBox");
+const system = document.getElementById("system");
+const loginBtn = document.getElementById("loginBtn");
+const loginError = document.getElementById("loginError");
+const happyHourBtn = document.getElementById("happyHourBtn");
+
+const form = document.getElementById("form");
+const list = document.getElementById("list");
+
+/* LOGIN */
+loginBtn.onclick = () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+        sessionStorage.setItem("logisticaLogin", "true");
+        showSystem();
+    } else {
+        loginError.textContent = "Login ou senha inválidos";
+    }
+};
+
+/* AUTO LOGIN NA SESSÃO */
+if (sessionStorage.getItem("logisticaLogin") === "true") {
+    showSystem();
+}
+
+function showSystem() {
+    loginBox.classList.add("hidden");
+    system.classList.remove("hidden");
+}
+
+/* HAPPY HOUR */
+happyHourBtn.onclick = () => {
+    window.location.href = "happyhour/index.html";
+};
+
+/* LOGÍSTICA */
+let data = JSON.parse(sessionStorage.getItem("logisticaData")) || [];
+
+function render() {
+    list.innerHTML = "";
+
+    if (data.length === 0) {
+        list.innerHTML = "<li>Nenhum registro cadastrado.</li>";
+        return;
+    }
+
+    data.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <strong>Mercadoria:</strong> ${item.product}<br>
+            <strong>Entregador:</strong> ${item.courier}<br>
+            <strong>Início:</strong> ${item.start}<br>
+            <strong>Previsão:</strong> ${item.expected}<br>
+            <strong>Confirmada:</strong> ${item.confirmed || "-"}
+            <div class="actions">
+                <button onclick="edit(${index})">Editar</button>
+                <button class="delete" onclick="removeItem(${index})">Excluir</button>
+            </div>
+        `;
+        list.appendChild(li);
+    });
+}
+
+form.onsubmit = e => {
+    e.preventDefault();
+
+    data.push({
+        product: product.value,
+        courier: courier.value,
+        start: start.value,
+        expected: expected.value,
+        confirmed: confirmed.value
+    });
+
+    save();
+    form.reset();
+};
+
+window.edit = index => {
+    const i = data[index];
+    product.value = i.product;
+    courier.value = i.courier;
+    start.value = i.start;
+    expected.value = i.expected;
+    confirmed.value = i.confirmed;
+
+    data.splice(index, 1);
+    save();
+};
+
+window.removeItem = index => {
+    if (confirm("Excluir este registro?")) {
+        data.splice(index, 1);
+        save();
+    }
+};
+
+function save() {
+    sessionStorage.setItem("logisticaData", JSON.stringify(data));
+    render();
+}
+
+render();
+</script>
+
+</body>
+</html>
