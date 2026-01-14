@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Login</h1>
+
+    <input type="email" id="email" placeholder="E-mail">
+    <input type="password" id="password" placeholder="Senha">
+
+    <button id="loginBtn">Entrar</button>
+
+    <a href="logon.html" id="goRegister" class="hidden">
+        Criar conta
+    </a>
+
+    <p id="error"></p>
+
+</div>
+
+<script src="auth.js"></script>
+<script>
+document.getElementById("loginBtn").addEventListener("click", () => {
+    const user = getUser();
+
+    if (!user.email || !user.password) {
+        error.textContent = "Nenhuma conta cadastrada nesta sessão.";
+        return;
+    }
+
+    if (email.value === user.email && password.value === user.password) {
+        loginUser();
+        window.location.href = "jogo.html";
+    } else {
+        error.textContent = "E-mail ou senha incorretos.";
+    }
+});
+</script>
+
+</body>
+</html>

@@ -114,3 +114,52 @@ button:hover {
     margin-top: 10px;
     min-height: 20px;
 }
+
+.user-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.user-menu button {
+    width: auto;
+    padding: 6px 10px;
+    background: #dc3545;
+}
+
+#goRegister {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #0d6efd;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+#goRegister:hover {
+    text-decoration: underline;
+}
+
+.user-menu div {
+    display: flex;
+    gap: 6px;
+}
+
+#logoutBtn {
+    background: #dc3545;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+#historyList li {
+    padding: 6px;
+    border-bottom: 1px solid #333;
+    font-size: 0.9rem;
+}

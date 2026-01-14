@@ -47,10 +47,32 @@
         <div class="cell" data-index="8"></div>
     </div>
 
+
+    <div class="user-menu">
+        <span id="userEmail"></span>
+
+        <div>
+            <button id="historyBtn">Histórico de partidas</button>
+            <button id="logoutBtn">Sair da conta</button>
+        </div>
+    </div>
+
+
     <button id="resetBtn" class="hidden">Reiniciar Partida</button>
     <p id="status"></p>
+
+    <div class="user-menu">
+        <span id="userEmail"></span>
+        <button id="deleteAccountBtn">Excluir Conta</button>
+    </div>
+
 </div>
 
 <script src="script.js"></script>
+
+<script src="auth.js"></script>
+<script>
+protectPage();
+</script>
 </body>
 </html>
