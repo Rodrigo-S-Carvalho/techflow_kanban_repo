@@ -40,19 +40,22 @@ JOGO
 
 #Escopo
 
+1 Criação do projeto de jogo da velha em linguagens Web front-end HTML, CSS e JavaScript
+2 Documentação README em constante atualização
+3 Testes extensivos do jogo e do próprio controle de documentação e gestão do projeto por método Kanban
+4 Implementação do sistema principal de controle logístico em linguagem Web front-end.
+
+
 #Tecnologia
+
+Linguagens Web front-end HTML, CSS e JavaScript
 
 #Gestão do projeto
 
-*Metodologia Kanban via GitHub Projects
+* Metodologia Kanban via GitHub Projects
+* GitHub Actions para teste local de funcionamento do sistema
 
 * Modificação do modelo Kanban original, mantendo apenas colunas "A fazer", "Em progresso" e  "Concluída", traduzidas do inglês, caso alguém da equipe tenha dificuldades com o idioma original.
-
-*Histórico de desenvolvimento
-
-*Hitórico de commits
-
-Commits: feat, fix, docs, test e build, perf, style, refactor, chore, ci, raw, cleanup e remove
 
 #Entrevista original com o cliente
 #Essa entrevista não prevê futuras modificações solicitadas pelo cliente. Modificações serão acrescidas ao log deste arquivo. A primeira versão do jogo deve conter o que se segue:
