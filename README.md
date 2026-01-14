@@ -9,6 +9,10 @@ Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema
 
 #Requisitos Funcionais
 
+SISTEMA PRINCIPAL
+* Controle logístico com login de usuário (login padrão é user admin@logistica.com e senha: 1234). Sistema logístico dará acesso ao jogo, através do botão "Happy Hour". Controle logístico permite listagem e exclusão de entregas a fazer e possui status visual de cada entrega. Entregas realizads não devem ser editadas nem excluídas
+
+JOGO 
 * Sistema de cadastro e login de usuário e salvamento de pontos por partida (histórico de pontuações)
 * Permitir escolha de símbolo X ou O e mudança de nome do jogador (até 20 caracteres)
 * Tabuleiro HTML 3 x 3 com blocos clicáveis.
@@ -19,6 +23,10 @@ Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema
 
 #Requisitos Não Funcionais
 
+SISTEMA PRINCIPAL
+*Sistema de fácil acesso, confiável e intuitivo ao usuário. Sistema deve ser protegido por login. 
+
+JOGO
 * Jogo simples para um jogador
 * Tema amigável e responsivo
 * Sem limites de tempo ou de números de partidas
@@ -49,7 +57,7 @@ Commits: feat, fix, docs, test e build, perf, style, refactor, chore, ci, raw, c
 
 #Pergunta 1 - Do que se trata o projeto?
 
-#Resposta 1 - um jogo da velha simples em HTML, CSS e JavaScript.
+#Resposta 1 - um jogo da velha simples em HTML, CSS e JavaScript. O projeto principal e final deve ser um sistema de controle logístico para o cliente. 
 
 #Pergunta 2 - Qual a mecânica do jogo?
 
@@ -95,3 +103,5 @@ Commits: feat, fix, docs, test e build, perf, style, refactor, chore, ci, raw, c
 2 Usuário percebeu que jogo é muito fácil para o jogador humano, pois é ele quem sempre inicia o jogo. Alternar entre jogador primeiro, então CPU começando cada partida para aumentar o desafio. (concluído na issue #4).
 
 3 Cliente decidiu incluir um sistema de login ao projeto. Agora, o usuário deve logar com algum e-mail e uma senha. Nada muda internamente, a não ser o salvamento automático das pontuações de cada partida. Jogador pode consultar o resultado em um log.
+
+4 Cliente solicitou a implementação do sistema principal, um controle logístico ao projeto, sendo este agora o projeto principal. O jogo segue sendo acessível dentro do sistema principal.
