@@ -9,7 +9,7 @@ Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema
 
 #Requisitos Funcionais
 
-* Sistema de login de uusuário e salvamento de pontos por partida (histórico de pontuações)
+* Sistema de cadastro e login de usuário e salvamento de pontos por partida (histórico de pontuações)
 * Permitir escolha de símbolo X ou O e mudança de nome do jogador (até 20 caracteres)
 * Tabuleiro HTML 3 x 3 com blocos clicáveis.
 * Sistema de placar Jogador vs CPU
