@@ -5,7 +5,9 @@ Projeto contém o repositório chamado techflow_kanban_repo e o projeto KanBan c
 
 #Levantamento de requisitos
 
-Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema de placar e jogador não pode modificar jogadas já realizadas. Não há limites de partidas e não haverá multiplayer nesta versão.
+* Criar um sistema prático, confiável e intuitivo de controle logístico, com status de entregas e possibilidade de edição e exclusão de informações, exceto em caso de entregas já concluídas que passam a ser provas documentais concretas.
+
+* Cliente solicita criação de um jogo da velha básico. Jogo deve conter sistema de placar e jogador não pode modificar jogadas já realizadas. Não há limites de partidas e não haverá multiplayer nesta versão.
 
 #Requisitos Funcionais
 
